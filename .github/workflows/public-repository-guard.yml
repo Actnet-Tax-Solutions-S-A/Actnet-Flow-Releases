@@ -1,0 +1,28 @@
+name: Public repository guard
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  source-free:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject source and sensitive file types
+        shell: bash
+        run: |
+          if find . -path './.git' -prune -o -type f \
+            \( -name '*.py' -o -name '*.ts' -o -name '*.tsx' -o -name '*.js' \
+               -o -name '*.sql' -o -name '*.bicep' -o -name '*.env' -o -name '*.pdf' \
+               -o -name '*.xlsx' -o -name '*.xls' -o -name '*.db' -o -name '*.sqlite*' \) \
+            -print -quit | grep -q .; then
+            echo 'Source or sensitive file type detected in the public releases repository.' >&2
+            exit 1
+          fi
+      - name: Verify repository scope
+        run: test -f README.md && test -d .github

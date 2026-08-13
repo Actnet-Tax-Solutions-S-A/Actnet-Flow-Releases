@@ -1,0 +1,25 @@
+name: Release problem
+description: Report a non-sensitive installer or updater problem.
+title: "[Release]: "
+labels: [release]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Actnet Flow version
+      placeholder: v0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Do not attach invoices, master data, credentials, VAT numbers, or extracted values.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
