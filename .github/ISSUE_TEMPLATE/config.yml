@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Actnet Flow support
-    url: https://github.com/Actnet-Tax-Solutions-S-A/Actnet-Flow-Releases/discussions
-    about: Ask a non-sensitive installation or release question.
   - name: Private security report
     url: https://github.com/Actnet-Tax-Solutions-S-A/Actnet-Flow-Releases/security/advisories/new
     about: Privately report a suspected vulnerability.
